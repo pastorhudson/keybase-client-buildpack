@@ -8,4 +8,4 @@ This is a Keybase Client Buildpack for use with Heroku or Dokku
 `dokku config:set keybase-buildpack-test BUILDPACK_URL=https://github.com/pastorhudson/keybase-client-buildpack.git`
 
 ### Add Buildpack on Heroku
-`dokku config:set keybase-buildpack-test BUILDPACK_URL=https://github.com/pastorhudson/keybase-client-buildpack.git`
+`heroku config:add keybase-buildpack-test BUILDPACK_URL=https://github.com/pastorhudson/keybase-client-buildpack.git`
