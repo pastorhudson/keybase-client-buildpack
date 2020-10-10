@@ -2,5 +2,5 @@
 cat <<EOF
 ---
 config_vars:
-PATH: $PATH:/app/vendor/keybase/bin
+PATH: $PATH:/app/vendor/keybase
 EOF
