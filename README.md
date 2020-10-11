@@ -5,9 +5,8 @@ This is a Keybase Client Buildpack for use with Heroku or Dokku
 `https://github.com/pastorhudson/keybase-client-buildpack.git`
 
 ### Add Buildpack on Dokku App
-`dokku buildpacks:add keybase-buildpack-test https://github.com/pastorhudson/keybase-client-buildpack.git`
-Or Possibly
-`dokku config:set keybase-buildpack-test BUILDPACK_URL=https://github.com/pastorhudson/keybase-client-buildpack.git`
+`dokku buildpacks:add <APP_NAME> https://github.com/pastorhudson/keybase-client-buildpack.git`
 
 ### Add Buildpack on Heroku
-`heroku config:add keybase-buildpack-test BUILDPACK_URL=https://github.com/pastorhudson/keybase-client-buildpack.git`
+`heroku buildpacks:add --index 1 https://github.com/pastorhudson/keybase-client-buildpack.git`
+or add the url in the heroku settings for your app.
