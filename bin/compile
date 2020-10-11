@@ -4,6 +4,10 @@ echo "-----> Installing Kebase-Client 5.6"
 cd $1
 # download the binary (-O) silently (-s)
 curl https://raw.githubusercontent.com/pastorhudson/keybase-client-buildpack/main/keybase-client.tar.gz -o keybase-client.tar.gz -s
-mkdir -p /app/vendor/bin
+mkdir -p \$HOME/.keybase/bin
 # untar the binary to the directory we want
-tar -C /app/vendor/bin/ -xvf keybase-client.tar.gz
+tar -C \$HOME/.keybase/bin -xvf keybase-client.tar.gz
+topic "Creating keybase export scripts"
+mkdir -p $BUILD_DIR/.profile.d
+echo "export PATH=\$PATH:\$HOME/.keybase/bin" >> $BUILD_DIR/.profile.d/keybase.sh
+indent "Created"
