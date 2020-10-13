@@ -7,6 +7,8 @@ curl https://raw.githubusercontent.com/pastorhudson/keybase-client-buildpack/mai
 mkdir -p .keybase/bin
 # untar the binary to the directory we want
 tar -C .keybase/bin -xvf keybase-client.tar.gz
+echo "Getting md5: "
+echo md5sum .keybase/bin/keybase
 echo "Creating keybase export scripts"
 mkdir -p .profile.d
 echo "export PATH=$PATH:$HOME/.keybase/bin" >> .profile.d/keybase.sh
