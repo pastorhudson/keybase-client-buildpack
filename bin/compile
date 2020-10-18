@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-echo "-----> Installing Kebase-Client 5.5.1"
+echo "-----> Installing Kebase-Client"
 # change to the the BUILD_DIR ($1)
 cd $1
 # download the binary (-O) silently (-s)
@@ -7,6 +7,7 @@ curl https://raw.githubusercontent.com/pastorhudson/keybase-client-buildpack/mai
 mkdir -p .keybase/bin
 # untar the binary to the directory we want
 tar -C .keybase/bin -xvf keybase-client.tar.gz
+echo | ./keybase -v
 echo "Getting md5: "
 echo | md5sum .keybase/bin/keybase
 echo "Creating keybase export scripts"
