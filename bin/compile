@@ -4,7 +4,7 @@ echo "-----> Installing Kebase-Client"
 cd $1
 # download the binary (-O) silently (-s)
 curl https://raw.githubusercontent.com/pastorhudson/keybase-client-buildpack/main/keybase-client.tar.gz -o keybase-client.tar.gz -s
-mkdir -p .keybase/bin
+mkdir -p ~/.keybase/bin
 # untar the binary to the directory we want
 tar -C .keybase/bin -xvf keybase-client.tar.gz
 echo | ~/.keybase/bin/keybase -v
