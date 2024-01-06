@@ -10,7 +10,7 @@ dpkg-deb --fsys-tarfile keybase_amd64.deb | tar -xvf - --strip-components=3 ./us
 # mkdir -p ~/.keybase/bin
 # untar the binary to the directory we want
 # tar -C ~/.keybase/bin -xvf keybase-client.tar.gz
-echo | keybase -v
+echo | ./keybase -v
 echo "Getting md5: "
 echo | md5sum keybase
 echo "Creating keybase export scripts"
