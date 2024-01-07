@@ -4,16 +4,16 @@ echo "-----> Installing Kebase-Client"
 cd $1
 # download the binary (-O) silently (-s)
 # curl https://raw.githubusercontent.com/pastorhudson/keybase-client-buildpack/main/keybase-client.tar.gz -o keybase-client.tar.gz -s
+
+
+mkdir -p /app/vendor/keybase/
+cd /app/vendor/keybase/
 curl --remote-name https://prerelease.keybase.io/keybase_amd64.deb
 dpkg-deb --fsys-tarfile keybase_amd64.deb | tar -xvf - --strip-components=3 ./usr/bin/keybase
-
-# mkdir -p ~/.keybase/bin
-# untar the binary to the directory we want
-# tar -C ~/.keybase/bin -xvf keybase-client.tar.gz
-echo | ./keybase -v
+echo | /app/vendor/keybase/keybase -v
 echo "Getting md5: "
-echo | md5sum keybase
+echo | md5sum /app/vendor/keybase/keybase
 echo "Creating keybase export scripts"
 mkdir -p .profile.d
-echo "export PATH=$PATH:$HOME/.keybase/bin" >> .profile.d/keybase.sh
+echo "export PATH=$PATH:$HOME/vendor/keybase" >> .profile.d/keybase.sh
 echo "Created"
