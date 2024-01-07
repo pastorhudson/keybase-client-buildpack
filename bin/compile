@@ -1,24 +1,28 @@
 #!/usr/bin/env bash
-echo "-----> Installing Kebase-Client"
-# change to the the BUILD_DIR ($1)
-cd $1
-# download the binary (-O) silently (-s)
-# curl https://raw.githubusercontent.com/pastorhudson/keybase-client-buildpack/main/keybase-client.tar.gz -o keybase-client.tar.gz -s
+echo "-----> Installing Keybase-Client"
 
+# Ensure the target directory exists and navigate to it
+mkdir -p $1/vendor/keybase
+cd $1/vendor/keybase
 
-mkdir -p ./vendor/keybase/
-cd /app/vendor/keybase/
+# Download the Keybase package
 curl -sS# --remote-name https://prerelease.keybase.io/keybase_amd64.deb
+
+# Extract the Keybase binary
 dpkg-deb --fsys-tarfile keybase_amd64.deb | tar -xvf - --strip-components=3 ./usr/bin/keybase
+
+# Ensure the binary is executable
+chmod +x keybase
+
+# Add Keybase to PATH in the profile script
 echo "Creating keybase export scripts"
-mkdir -p .profile.d
-echo "export PATH=$PATH:$HOME/vendor/keybase" >> .profile.d/keybase.sh
+mkdir -p $1/.profile.d
+echo "export PATH=\"\$PATH:\$HOME/vendor/keybase\"" >> $1/.profile.d/keybase.sh
 echo "Created"
 
-echo | keybase -v
+# Test the Keybase binary execution
+./keybase -v
 echo "Getting md5: "
-echo | md5sum /app/vendor/keybase/keybase
-echo "Creating keybase export scripts"
-mkdir -p .profile.d
-echo "export PATH=$PATH:$HOME/vendor/keybase" >> .profile.d/keybase.sh
-echo "Created"
+md5sum keybase
+
+# The export script creation is repeated; you can remove the duplicate block
