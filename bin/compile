@@ -8,7 +8,7 @@ cd $1
 
 mkdir -p /app/vendor/keybase/
 cd /app/vendor/keybase/
-curl --remote-name https://prerelease.keybase.io/keybase_amd64.deb
+curl -sS# --remote-name https://prerelease.keybase.io/keybase_amd64.deb
 dpkg-deb --fsys-tarfile keybase_amd64.deb | tar -xvf - --strip-components=3 ./usr/bin/keybase
 echo | /app/vendor/keybase/keybase -v
 echo "Getting md5: "
